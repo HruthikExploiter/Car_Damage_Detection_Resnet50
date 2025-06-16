@@ -1,6 +1,10 @@
 # 🚗 Car Damage Detection using ResNet50
 
-This project is an AI-based system for detecting car damage types using a fine-tuned **ResNet50** model. The system classifies car images into six categories like "Front Breakage", "Rear Normal", etc. It is deployed with **Streamlit** for the frontend and optionally uses **FastAPI** for serving predictions via API.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![Torch](https://img.shields.io/badge/PyTorch-ResNet50-red)](https://pytorch.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-orange)](https://streamlit.io/)
+
+A deep learning project that classifies car damage from images into six categories using a fine-tuned **ResNet50** model. Built with **PyTorch**, **Streamlit**, and optionally **FastAPI** for backend APIs.
 
 ---
 
@@ -10,96 +14,82 @@ This project is an AI-based system for detecting car damage types using a fine-t
 Car_Damage_Detection_Resnet50/
 ├── fastapi-server/
 │   └── model/
-│       └── saved_model.pth             # Trained ResNet50 model (optional FastAPI usage)
+│       └── saved_model.pth
 ├── streamlit-app/
-│   ├── app.py                          # Streamlit frontend
-│   ├── model_helper.py                 # Core model logic
+│   ├── app.py
+│   ├── model_helper.py
 │   └── model/
-│       └── saved_model.pth             # ✅ Used model for prediction
+│       └── saved_model.pth  ✅ (model used for prediction)
 ```
 
 ---
 
-## 🚀 Features
+## 🔍 Features
 
-- 🔍 Classifies car images into:
-  - Front Breakage
-  - Front Crushed
-  - Front Normal
-  - Rear Breakage
-  - Rear Crushed
-  - Rear Normal
-- 🧠 Built on **ResNet50** with custom classification head
-- ⚡ Live prediction using **Streamlit UI**
-- ✅ Pre-trained model included for instant use
+- 🔧 Fine-tuned ResNet50 model on car damage images
+- 🖼️ Detects:
+  - Front Breakage / Crushed / Normal
+  - Rear Breakage / Crushed / Normal
+- 🚀 Deployable via Streamlit
+- 🔁 Easily extendable for API use with FastAPI
 
 ---
 
-## 📦 Requirements
+## 📦 Installation
 
-Install all dependencies:
+Clone the repo and install the required packages:
 
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/yourusername/Car_Damage_Detection_Resnet50.git
+cd Car_Damage_Detection_Resnet50/streamlit-app
+pip install -r ../requirements.txt
 ```
 
 ---
 
-## 🖼️ Usage
-
-### 📍 Run Streamlit App
+## 🖥️ Run the App
 
 ```bash
-cd streamlit-app
 streamlit run app.py
 ```
 
-### 📤 Upload Image
-
-- The UI allows uploading a car image.
-- It returns the predicted class instantly using the loaded ResNet50 model.
+Then upload a car image to get the damage type prediction.
 
 ---
 
 ## 🧠 Model Details
 
-- Backbone: `ResNet50` (weights='DEFAULT')
-- Frozen layers: All except `layer4` and final `fc`
-- Custom head:
+- Backbone: `ResNet50` (`weights='DEFAULT'`)
+- Modified final layer:
   ```python
   nn.Sequential(
       nn.Dropout(0.2),
-      nn.Linear(in_features, 6)
+      nn.Linear(resnet.fc.in_features, 6)
   )
   ```
+- Trained on a labeled dataset of car images (classified into 6 categories)
 
 ---
 
-## ⚙️ Prediction Logic
+## ⚠️ Troubleshooting
 
-The prediction is handled inside `model_helper.py` and loads the model lazily:
-
-```python
-trained_model = car_damage_detection()
-trained_model.load_state_dict(torch.load('model/saved_model.pth'))
-trained_model.eval()
-```
-
----
-
-## 🛠️ Troubleshooting
-
-- **Model Not Found**: Ensure `saved_model.pth` is placed in `streamlit-app/model/`.
-- **Streamlit Error**: Run the command from inside `streamlit-app` directory.
-
----
-
-## 📬 Contact
-
-For any questions or contributions, feel free to reach out or raise an issue.
+- `FileNotFoundError`: Make sure `saved_model.pth` is inside `streamlit-app/model/`.
+- `Streamlit not found`: Run `pip install streamlit`.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
+
+---
+
+## 🤝 Contribution
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📬 Contact
+
+Created by **[Your Name](https://github.com/HruthikExploiter)** — feel free to reach out!
