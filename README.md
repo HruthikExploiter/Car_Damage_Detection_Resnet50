@@ -92,4 +92,4 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 ## 📬 Contact
 
-Created by **[Your Name](https://github.com/HruthikExploiter)** — feel free to reach out!
+Created by **[Hruthik GAjjala](https://github.com/HruthikExploiter)** — feel free to reach out!
