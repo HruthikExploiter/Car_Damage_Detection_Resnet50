@@ -40,7 +40,7 @@ Car_Damage_Detection_Resnet50/
 Clone the repo and install the required packages:
 
 ```bash
-git clone https://github.com/yourusername/Car_Damage_Detection_Resnet50.git
+git clone https://github.com/HruthikExploiter/Car_Damage_Detection_Resnet50.git
 cd Car_Damage_Detection_Resnet50/streamlit-app
 pip install -r ../requirements.txt
 ```
