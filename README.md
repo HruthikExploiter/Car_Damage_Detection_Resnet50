@@ -7,6 +7,8 @@
 A deep learning project that classifies car damage from images into six categories using a fine-tuned **ResNet50** model. Built with **PyTorch**, **Streamlit**, and optionally **FastAPI** for backend APIs.
 
 ---
+## App Link
+https://cardamagedetectionresnet50.streamlit.app/
 
 ## 📂 Project Structure
 
